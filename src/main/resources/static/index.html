@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="controller.loadMessages();">
+    <input type="text" placeholder="Cadena">
+    <button type="button" onclick="controller.publishMessage();">Send</button>
+    <table style="width:100%" class = "table" id="HTMLtable">
+
+    </table>
+    <script type="text/javascript" src="js/controller.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
