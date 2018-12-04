@@ -1,16 +1,83 @@
 <!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/4.0/examples/cover/# -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body onload="controller.loadMessages();">
-    <input type="text" placeholder="Cadena">
-    <button type="button" onclick="controller.publishMessage();">Send</button>
-    <table style="width:100%" class = "table" id="HTMLtable">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    </table>
-    <script type="text/javascript" src="js/controller.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>ARSW - Orders</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/cover.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body class="text-center" onload="Controller.loadMessages();">
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">API Orders</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="">Orders</a>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover" id="content">
+        <h1 class="cover-heading">Save words application</h1>
+        <p class="lead">Messages application.</p>
+        <div class="grid-container">
+
+            <div class="grid-item">
+                <input type="text" id="word" class="form-control" placeholder="Word">
+            </div>
+
+            <div class="grid-item">
+                <button type="button" class="btn btn-default" onclick="Controller.saveWord()">Save</button>
+            </div>
+
+            <div class="grid-item">
+                <button type="button" class="btn btn-default" onclick="Controller.loadMessages();">Search</button>
+            </div>
+
+        </div>
+
+        <table style="width:100%" class="table" id="HTMLtable">
+
+        </table>
+
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
+                    href="https://twitter.com/mdo">@mdo</a>.</p>
+            <p>Made by <a>Sergio Rodriguez</a></p>
+        </div>
+    </footer>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="./js/popper.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/Controller.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 </body>
 </html>
