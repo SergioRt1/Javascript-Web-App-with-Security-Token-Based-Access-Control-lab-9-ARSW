@@ -1,4 +1,4 @@
-package com.example.lab9.persitence;
+package com.example.lab9.beans;
 
 import com.example.lab9.model.Message;
 import com.example.lab9.services.MessageException;

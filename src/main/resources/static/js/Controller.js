@@ -1,5 +1,76 @@
 var Controller = (function () {
 
+    function getAuthotization() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        getToken(username, password);
+    }
+
+    function getToken(username, password) {
+        axios({
+            method:'post',
+            url:'/login',
+            headers: {'Content-Type': 'application/json'},
+            data:{
+                "username": username,
+                "password": password
+            }
+        })
+            .then(function (response) {
+                if(response.data==="") {
+                    console.log(response);
+                    localStorage['AUTH_TOKEN'] = response.headers.authorization;
+                    axios.defaults.headers.common['Authorization'] = response.headers.authorization;
+                    window.location.href = "/index.html";
+                }else alert("Wrong credentials");
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    }
+
+    function registerUser() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var confirm = document.getElementById("confirm").value;
+        if (confirm === password) {
+            register(username, password);
+        } else alert("The password and confirmation are not equal");
+    }
+
+    function register(username, password) {
+        axios.post('/users/sign-up', {
+            "username": username,
+            "password": password
+        })
+            .then(function (response) {
+                console.log(response);
+                window.location.href = "/login.html"
+            })
+            .catch(function (reason) {
+                console.log(reason);
+                alert(reason.response.data)
+            })
+    }
+
+    function getTokenSaved() {
+        return localStorage["AUTH_TOKEN"] || "";
+    }
+
+    function logout() {
+        localStorage['AUTH_TOKEN'] = '';
+        document.getElementById("logout").setAttribute("href","");
+    }
+
+    function isLogin() {
+        if(localStorage['AUTH_TOKEN']==='')
+            document.getElementById("logout").setAttribute("href","");
+        else {
+            document.getElementById("logout").removeAttribute("href");
+            axios.defaults.headers.common['Authorization'] = localStorage['AUTH_TOKEN'];
+        }
+    }
+
     function clearTables() {
         var content = document.getElementById("content");
         var tables = document.getElementsByClassName("table");
@@ -78,7 +149,9 @@ var Controller = (function () {
     function loadData(callback) {
         axios.get("/message")
             .then(function (response) {
-                callback(response.data);
+                if(Array.isArray(response.data))
+                    callback(response.data);
+                else alert("Please Login");
             }).catch(function (error) {
             console.log(error);
             alert("Error happened");
@@ -87,6 +160,10 @@ var Controller = (function () {
 
     return {
         loadMessages: loadMessages,
-        saveWord: saveWord
+        saveWord: saveWord,
+        getAuthotization: getAuthotization,
+        register: registerUser,
+        logout:logout,
+        isLogin:isLogin
     };
 })();

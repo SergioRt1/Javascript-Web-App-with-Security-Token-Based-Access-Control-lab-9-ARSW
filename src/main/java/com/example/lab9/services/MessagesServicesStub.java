@@ -1,7 +1,7 @@
 package com.example.lab9.services;
 
 import com.example.lab9.model.Message;
-import com.example.lab9.persitence.MessagesPersitence;
+import com.example.lab9.beans.MessagesPersitence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
